@@ -1,25 +1,27 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import PrivateRoute from "./util/PrivateRoute";
-import Login from "./pages/Login";
-import Dashboard from "./scenes/dashboard";
-import Team from "./scenes/team";
-import Invoices from "./scenes/invoices";
-import Contacts from "./scenes/contacts";
-import Bar from "./scenes/bar";
-import Form from "./scenes/form";
-import Line from "./scenes/line";
-import Pie from "./scenes/pie";
-import FAQ from "./scenes/faq";
-import Geography from "./scenes/geography";
-import Calendar from "./scenes/calendar/calendar";
-import Sidebar from "./scenes/global/Sidebar";
-import Topbar from "./scenes/global/Topbar";
 import { useEffect, useState } from "react";
-import { PUBLIC_ROUTES, SIDEBAR } from "./util/Constant";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import ForgotPassword from "./pages/ForgotPassword";
+import Login from "./pages/Login";
+import Bar from "./scenes/bar";
+import Calendar from "./scenes/calendar/calendar";
+import Contacts from "./scenes/contacts";
+import Dashboard from "./scenes/dashboard";
+import FAQ from "./scenes/faq";
+import Form from "./scenes/form";
+import Geography from "./scenes/geography";
+import Sidebar from "./scenes/global/Sidebar";
+import Topbar from "./scenes/global/Topbar";
+import Line from "./scenes/line";
+import ManageLocation from "./scenes/location";
+import Pie from "./scenes/pie";
+import Team from "./scenes/user";
+import { ColorModeContext, useMode } from "./theme";
+import { PUBLIC_ROUTES, SIDEBAR } from "./util/Constant";
+import PrivateRoute from "./util/PrivateRoute";
+import User from "./scenes/user";
+import ManageCamera from "./scenes/camera";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -58,9 +60,10 @@ function App() {
               <Routes>
                 <Route element={<PrivateRoute />}>
                   <Route path="/admin" element={<Dashboard />} />
-                  <Route path="/manage-account" element={<Team />} />
+                  <Route path="/manage-account" element={<User />} />
                   <Route path="/contacts" element={<Contacts />} />
-                  <Route path="/invoices" element={<Invoices />} />
+                  <Route path="/manage-location" element={<ManageLocation />} />
+                  <Route path="/manage-camera" element={<ManageCamera />} />
                   <Route path="/my-profile" element={<Form />} />
                   <Route path="/bar" element={<Bar />} />
                   <Route path="/pie" element={<Pie />} />

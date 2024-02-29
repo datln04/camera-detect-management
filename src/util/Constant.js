@@ -1,14 +1,15 @@
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
+import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import { Link, Typography } from "@mui/material";
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 
 
 export const PUBLIC_ROUTES = ["/login", "/forgot-password"]
@@ -26,19 +27,25 @@ export const SIDEBAR = [
         title: 'Manage Account',
         url: '/manage-account',
         icon: <PeopleOutlinedIcon />,
-        type: 'Data'
+        type: 'Manage'
+    },
+    {
+        title: 'Manage Location',
+        url: '/manage-location',
+        icon: <LocationOnIcon />,
+        type: 'Manage'
+    },
+    {
+        title: 'Manage Camera',
+        url: '/manage-camera',
+        icon: <CameraAltIcon />,
+        type: 'Manage'
     },
     {
         title: 'Contacts Information',
         url: '/contacts',
         icon: <ContactsOutlinedIcon />,
-        type: 'Data'
-    },
-    {
-        title: 'Invoices Balances',
-        url: '/invoices',
-        icon: <ReceiptOutlinedIcon />,
-        type: 'Data'
+        type: 'Manage'
     },
     {
         title: 'Calendar',
