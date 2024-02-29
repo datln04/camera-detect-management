@@ -15,6 +15,7 @@
 
 import superagent from "superagent";
 import querystring from "querystring";
+import { SERVER_URL } from "../../../util/Constant";
 
 /**
 * @module ApiClient
@@ -29,13 +30,13 @@ import querystring from "querystring";
 * @class
 */
 class ApiClient {
-    constructor() {
+    constructor(basePath = SERVER_URL) {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
          * @default http://localhost
          */
-        this.basePath = 'http://localhost'.replace(/\/+$/, '');
+        this.basePath = SERVER_URL.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.
@@ -93,6 +94,8 @@ class ApiClient {
         this.plugins = null;
 
     }
+
+    
 
     /**
     * Returns a string representation for an actual parameter.

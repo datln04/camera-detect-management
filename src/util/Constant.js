@@ -13,6 +13,8 @@ import { Link, Typography } from "@mui/material";
 
 export const PUBLIC_ROUTES = ["/login", "/forgot-password"]
 
+export const SERVER_URL = "http://firedetectioncs.ddns.net:4211"
+
 export const SIDEBAR = [
     {
         title: 'Dashboard',

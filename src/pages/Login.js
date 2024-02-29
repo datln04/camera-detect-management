@@ -9,15 +9,16 @@ import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Cookies from 'js-cookie';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { mockAccount } from '../data/mockData';
+import ApiClientSingleton from '../api/generated/ApiClientImpl';
+import UserApi from '../api/generated/generate-api/api/UserApi';
 import { Copyright, DEFAULT_EMAIL_LENGTH, DEFAULT_PASSWORD_LENGTH, EMAIL_ERROR_LENGTH_MESSAGE, EMAIL_INVALID_MESSAGE, PASSWORD_ERROR_LENGTH_MESSAGE } from '../util/Constant';
 import { emailRegex } from '../util/utilities';
-import UserApi from '../api/generated/generate-api/api/UserApi';
 
-const userAPI = new UserApi();
+const userAPI = new UserApi(ApiClientSingleton.getInstance());
 const defaultTheme = createTheme();
 // const userAPI = new UserApi()
 
@@ -40,16 +41,17 @@ export default function Login() {
             return toast.error(PASSWORD_ERROR_LENGTH_MESSAGE);
         }
 
-
-        const accounts = mockAccount;
-        // eslint-disable-next-line
-        const account = accounts.find(a => a.email === email && a.password == pw)
-        if (account) {
-            sessionStorage.setItem("ACCOUNT", JSON.stringify(account));
-            navigate('/admin')
-        } else {
-            return toast.error("User is not exist");
-        }
+        const body = {userLoginRequest: {securityCode: "XXX_001", password: '123'}}
+        userAPI.loginPost(body, (err, res) => {
+            if(res){
+                Cookies.set("account", JSON.stringify(res?.data), { expires: 1/48 });
+                Cookies.set("token", JSON.stringify(res?.data?.accessToken), { expires: 1/48 });
+                navigate('/admin')
+            }
+            if(err){
+                return toast.error("User is not exist");
+            }
+        })
        
 
     };

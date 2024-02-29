@@ -140,6 +140,7 @@ export default class UserApi {
      * data is of type: {@link module:model/UserLoginResponseRestDTO}
      */
     loginPost(opts, callback) {
+      console.log(opts);
       opts = opts || {};
       let postBody = opts['userLoginRequest'];
 
